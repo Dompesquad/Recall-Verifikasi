@@ -1,8 +1,0 @@
-{
-  "name": "recall-verifier",
-  "type": "module",
-  "dependencies": {
-    "viem": "latest",
-    "node-fetch": "latest"
-  }
-}
