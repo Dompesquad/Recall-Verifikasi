@@ -1,0 +1,26 @@
+name: Verify Wallet
+
+on:
+  workflow_dispatch:  # kamu bisa jalankan manual
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run wallet verification
+        env:
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          RECALL_API_KEY: ${{ secrets.RECALL_API_KEY }}
+        run: node scripts/verify-wallet.js
